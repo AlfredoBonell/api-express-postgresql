@@ -16,9 +16,9 @@ app.get("/explorers", async (req, res) => {
   res.json(allExplorers);
 });
 
-app.get("/MissionCommander", async (req, res) => {
-  const allMisionCommanders = await prisma.MissionCommander.findMany({});
-  res.json(allMisionCommanders);
+app.get("/Mission", async (req, res) => {
+  const allMission = await prisma.Mission.findMany({});
+  res.json(allMission);
 });
 
 app.get("/explorers/:id", async (req, res) => {
@@ -29,12 +29,12 @@ app.get("/explorers/:id", async (req, res) => {
   res.json(explorer);
 });
 
-app.get("/MissionCommander/:id", async (req, res) => {
+app.get("/Mission/:id", async (req, res) => {
   const id = req.params.id;
-  const missionCommander = await prisma.MissionCommander.findUnique({
+  const mission = await prisma.Mission.findUnique({
     where: { id: parseInt(id) },
   });
-  res.json(missionCommander);
+  res.json(mission);
 });
 
 app.post("/explorers", async (req, res) => {
@@ -48,16 +48,16 @@ app.post("/explorers", async (req, res) => {
   return res.json({ message });
 });
 
-app.post("/MissionCommander", async (req, res) => {
-  const missionCommander = {
+app.post("/Mission", async (req, res) => {
+  const mission = {
     name: req.body.name,
     lang: req.body.lang,
     missionCommander: req.body.missionCommander,
     enrollments: req.body.enrollments,
     hasCertification: req.body.hasCertification,
   };
-  const message = "MissionCommander creado.";
-  await prisma.MissionCommander.create({ data: missionCommander });
+  const message = "Mission creado.";
+  await prisma.Mission.create({ data: mission });
   return res.json({ message });
 });
 
@@ -76,10 +76,10 @@ app.put("/explorers/:id", async (req, res) => {
   return res.json({ message: "Actualizado correctamente" });
 });
 
-app.put("/MissionCommander/:id", async (req, res) => {
+app.put("/Mission/:id", async (req, res) => {
   const id = parseInt(req.params.id);
 
-  await prisma.MissionCommander.update({
+  await prisma.Mission.update({
     where: {
       id: id,
     },
@@ -97,9 +97,9 @@ app.delete("/explorers/:id", async (req, res) => {
   return res.json({ message: "Eliminado correctamente" });
 });
 
-app.delete("/MissionCommander/:id", async (req, res) => {
+app.delete("/Mission/:id", async (req, res) => {
   const id = parseInt(req.params.id);
-  await prisma.MissionCommander.delete({ where: { id: id } });
+  await prisma.Mission.delete({ where: { id: id } });
   return res.json({ message: "Eliminado correctamente" });
 });
 

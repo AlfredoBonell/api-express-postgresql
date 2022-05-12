@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
       },
     });
 
-    const missioncommander = await prisma.MissionCommander.upsert({
+    const mission = await prisma.Mission.upsert({
         where: { name: 'Carlo'},
         update: {},
         create: {
@@ -35,7 +35,7 @@ const prisma = new PrismaClient();
       },
     });
 
-    const missioncommander1 = await prisma.MissionCommander.upsert({
+    const mission1 = await prisma.Mission.upsert({
         where: { name: 'Rodrigo'},
         update: {},
         create: {
@@ -57,7 +57,7 @@ const prisma = new PrismaClient();
       },
     });
 
-    const missioncommander2 = await prisma.MissionCommander.upsert({
+    const mission2 = await prisma.Mission.upsert({
         where: { name: 'José Jesús'},
         update: {},
         create: {
@@ -79,7 +79,7 @@ const prisma = new PrismaClient();
       },
     });
 
-    const missioncommander3 = await prisma.MissionCommander.upsert({
+    const mission3 = await prisma.Mission.upsert({
         where: { name: 'Fernanda'},
         update: {},
         create: {
@@ -92,7 +92,7 @@ const prisma = new PrismaClient();
     });
 
     console.log('Create 3 explorers');
-    console.log('Create 3 mission commander');
+    console.log('Create 3 mission');
   } catch(e) {
     console.error(e);
     process.exit(1);
