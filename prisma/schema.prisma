@@ -23,10 +23,21 @@ model Explorer {
 model Mission {
   id Int @id @default(autoincrement())
   name String @unique
-  lang String 
-  missionCommander String @unique
-  enrollments Int @unique
-  hasCertification Boolean @default(false)
+  lang String
+  missionCommander String
+  enrollments Int
+  hasCertification  Boolean @default(false)
+  dateCreated DateTime @default(now())
+  lastUpdated DateTime @updatedAt
+}
+
+model missionCommander {
+  id Int @id @default(autoincrement())
+  name String
+  username String @unique
+  mainStack String
+  currentEnrollment Boolean @default(false)
+  hasAzureCertification  Boolean @default(false)
   dateCreated DateTime @default(now())
   lastUpdated DateTime @updatedAt
 }
