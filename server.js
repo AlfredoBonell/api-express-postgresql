@@ -3,6 +3,16 @@ const app = express();
 app.use(express.json());
 const port = process.env.PORT || 3000;
 
+// Cors
+const cors = require("cors");
+
+const corsOption = {
+  origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOption));
+
+
 // Require para usar Prisma
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
